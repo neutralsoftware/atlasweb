@@ -20,7 +20,7 @@ export default function InformationCard({
 
     return (
         <div
-            className={`flex flex-row items-center gap-2 rounded-3xl bg-gray-600/50 px-3 py-1 font-mono text-xs text-white backdrop-blur-lg ${className}`}
+            className={`flex flex-row items-center gap-2 rounded-3xl bg-gray-600/50 px-3 py-1 font-mono text-xs text-white backdrop-blur-lg ${className} hover:cursor-pointer hover:bg-gray-600/70 transition-all`}
         >
             <Circle
                 className={`h-3 w-3 ${statusColor}`}

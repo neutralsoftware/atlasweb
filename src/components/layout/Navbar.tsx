@@ -65,12 +65,13 @@ const links = [
     },
 ];
 
-export default function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
+export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
+    const [scrolled, setScrolled] = useState(adaptive ? false : true);
     const [open, setOpen] = useState(false);
     const solid = scrolled || open;
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 80);
+        const onScroll = () =>
+            setScrolled(adaptive ? window.scrollY > 80 : true);
         const onKey = (event: KeyboardEvent) => {
             if (event.key === "Escape") setOpen(false);
         };

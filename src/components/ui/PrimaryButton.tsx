@@ -1,17 +1,18 @@
+import { AppleLight } from "@ridemountainpig/svgl-react";
 import type { ReactNode } from "react";
 
 type PrimaryButtonProps = {
     children: ReactNode;
     theme?: "light" | "dark" | "accent";
     className?: string;
-    onClick?: () => void;
+    link: string;
 };
 
 export default function PrimaryButton({
     children,
     theme = "light",
     className = "",
-    onClick,
+    link,
 }: PrimaryButtonProps) {
     const themeClasses =
         theme === "light"
@@ -20,12 +21,15 @@ export default function PrimaryButton({
               ? "bg-black text-white hover:bg-gray-800"
               : "bg-accent text-white hover:bg-accent-hover";
 
+    const button =
+        "inline-flex items-center justify-center gap-3 rounded-[40px] px-[23px] py-[14px] text-sm font-semibold transition-[transform,background] duration-200 hover:-translate-y-0.5";
+
     return (
-        <button
-            onClick={onClick}
-            className={`flex items-center gap-2 rounded-3xl px-4 py-2 font-semibold transition-all duration-200 hover:cursor-pointer hover:shadow-lg ${themeClasses} ${className}`}
+        <a
+            className={`${button} bg-white text-[#26332e] hover:bg-[#e9f4f0]`}
+            href={link}
         >
             {children}
-        </button>
+        </a>
     );
 }

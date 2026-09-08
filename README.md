@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Atlas Engine website
 
-## Getting Started
+The Atlas Engine site, built with Next.js and Bun. Pages follow the existing Atlas visual system; historical stories and imagery come from the previous website.
 
-First, run the development server:
+## Development
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```sh
+bun install --frozen-lockfile
+bun run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Check code with `bun run lint` and `bunx tsc --noEmit`. Production commands are `bun run build` and `bun run start`; run the production build before deploying.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Writing news
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `content/news/your-slug.md` or `.mdx`. The filename becomes `/news/your-slug`. No registry or page code needs to change. Use `.md` for Markdown and `.mdx` for JSX components. Copy `content/examples/post.mdx` for a complete authoring example.
 
-## Learn More
+```yaml
+---
+title: "Your story"
+description: "A short summary for the image grid and social previews."
+date: "2026-09-08"
+image: "/images/your-cover.png"
+imageAlt: "Describe what the cover shows"
+author: "Neutral Software"
+category: "Development"
+draft: true
+---
+```
 
-To learn more about Next.js, take a look at the following resources:
+Put images in `public/images/`. All fields above except `draft` are required. Keep the date quoted. Set `draft: false` or remove it to publish; drafts are excluded from article routes, the grid, RSS and sitemap in every environment. To preview a draft locally, temporarily set it to false and restore it before committing. Future dates do not schedule publication.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The newsroom sorts by date, supports full-title/summary search and automatically creates category filters. Use `##` and `###` headings for the right-hand article navigation. The page supplies the title, date, author, cover, reading time, breadcrumbs and adjacent stories; do not repeat the title as an H1.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Supported in Markdown and MDX:
 
-## Deploy on Vercel
+- Images, lists, quotes, links, horizontal rules, GFM tables and task lists.
+- Fenced code with a language, syntax highlighting and a copy button. Optional `title="file.cpp"` and `{2-4}` highlight metadata.
+- Inline `$math$` and display `$$math$$` rendered with KaTeX.
+- Fenced `mermaid` diagrams, loaded only when used, with a readable source disclosure.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+MDX also provides `<Callout title="Note">...</Callout>` and `<Chart title="Measurements" data={[{ label: "Scene A", value: 12 }]} unit=" ms" caption="Test conditions" />`. Charts accept non-negative numeric values and include a data table. Use native `<video controls ... />`, `<details>` or other semantic HTML for richer posts. Add reusable components to `src/lib/article.tsx` when needed. Keep MDX in this trusted repository: it executes as code on the server, so never use this renderer for untrusted submissions. Markdown mode does not execute JSX or raw HTML.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The example in `content/examples/` includes all features and is never published automatically. The historical archive is preserved under its existing slugs. `/feed.xml`, `/sitemap.xml` and `/robots.txt` are generated from the published collection.
+
+## Routing and release
+
+- `/vela1`: first beta release presentation.
+- `/overview`: editor, rendering and architecture overview.
+- `/about`: Neutral Software and the creator’s story.
+- `/news`: searchable image grid and article pages.
+- `/download`: installation guidance and the official GitHub releases.
+- `/learn` and its old subpaths redirect to `https://docs.atlasengine.org`.
+
+Deployment must include `content/news`; Next.js output tracing is configured to include it. Production URLs and social metadata use `https://atlasengine.org`. Download links use the official releases list so beta assets remain discoverable without a dependency on the GitHub API.
+
+Use Jujutsu for history: `jj commit -m "Describe the change"`, then `jj bookmark set main -r @-`. Push only when you intend to update the remote with `jj git push --bookmark main`. Local commits do not publish the website.

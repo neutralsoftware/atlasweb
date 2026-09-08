@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Logo from "@/assets/logo.svg";
+import Logo from "@/components/ui/Logo";
 import {
     Menu,
     X,

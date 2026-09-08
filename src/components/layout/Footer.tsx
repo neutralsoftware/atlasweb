@@ -2,7 +2,7 @@ import { AppleLight } from "@ridemountainpig/svgl-react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/assets/logo.svg";
+import Logo from "@/components/ui/Logo";
 
 export default function Footer() {
     const container =

@@ -14,10 +14,24 @@ import { useEffect, useState } from "react";
 import GradientLogo from "../ui/GradientLogo";
 
 const links = [
-    { label: "Overview", href: "/overview", dropdown: [
-        { title: "Engine", description: "An editor and runtime for your next world.", href: "/overview#engine", icon: Boxes },
-        { title: "Rendering", description: "Materials, light and atmosphere.", href: "/overview#rendering", icon: Layers3 },
-    ] },
+    {
+        label: "Overview",
+        href: "/overview",
+        dropdown: [
+            {
+                title: "Engine",
+                description: "An editor and runtime for your next world.",
+                href: "/overview#engine",
+                icon: Boxes,
+            },
+            {
+                title: "Rendering",
+                description: "Materials, light and atmosphere.",
+                href: "/overview#rendering",
+                icon: Layers3,
+            },
+        ],
+    },
     { label: "About", href: "/about" },
     { label: "Learn", href: "/learn" },
     { label: "News", href: "/news" },
@@ -165,7 +179,14 @@ export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
                     id="mobile-navigation"
                 >
                     {links.map((link) => (
-                        <Link key={link.label} href={link.href} onClick={() => setOpen(false)} className="border-b border-black/5 py-3 text-base">{link.label}</Link>
+                        <Link
+                            key={link.label}
+                            href={link.href}
+                            onClick={() => setOpen(false)}
+                            className="border-b border-black/5 py-3 text-base"
+                        >
+                            {link.label}
+                        </Link>
                     ))}
                     <Link
                         className="flex items-center gap-2.5 py-3"

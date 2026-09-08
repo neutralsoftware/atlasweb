@@ -52,11 +52,19 @@ const modules = [
         "A real-time view of performance, memory and GPU usage.",
     ],
 ];
-import { container, eyebrow, title, copy, button, featureTitle, sectionHead } from "@/components/ui/styles";
+import {
+    container,
+    eyebrow,
+    title,
+    copy,
+    button,
+    featureTitle,
+    sectionHead,
+} from "@/components/ui/styles";
 
 export default function Home() {
     return (
-        <main id="top">
+        <main id="top" className="font-sans">
             <Navbar adaptive={true} />
             <section className="relative h-[max(760px,100svh)] max-h-[1150px] text-white max-[760px]:h-[100svh] max-[760px]:min-h-[740px] max-[760px]:max-h-[950px]">
                 <Image
@@ -247,7 +255,7 @@ export default function Home() {
                         </p>
                         <a
                             className="mt-[22px] inline-flex items-center gap-3 text-[13px] font-semibold text-[#2e7865] hover:underline hover:underline-offset-[5px]"
-                            href="https://atlasengine.org/overview/architecture"
+                            href="/overview#architecture"
                         >
                             Explore the architecture <ArrowRight size={17} />
                         </a>

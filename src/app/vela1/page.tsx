@@ -6,7 +6,11 @@ import Image from "next/image";
 import Carousel from "@/components/layout/Carousel";
 import Footer from "@/components/layout/Footer";
 
-export const metadata: Metadata = { title: "Vela 1 — Atlas Engine", description: "Welcome to Atlas Vela, the first beta of Atlas Engine. Explore the editor and the journey from pre-alpha to beta." };
+export const metadata: Metadata = {
+    title: "Vela 1 — Atlas Engine",
+    description:
+        "Welcome to Atlas Vela, the first beta of Atlas Engine. Explore the editor and the journey from pre-alpha to beta.",
+};
 
 const evolutionSlides = [
     {

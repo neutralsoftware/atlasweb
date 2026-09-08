@@ -86,7 +86,7 @@ export default function Home() {
                     </p>
                     <a
                         className={`${button} bg-white text-[#26332e] hover:bg-[#e9f4f0]`}
-                        href="https://atlasengine.org/download"
+                        href="/download"
                     >
                         Download for macOS <AppleLight className="h-4 w-4" />
                     </a>

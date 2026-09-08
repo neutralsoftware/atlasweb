@@ -1,4 +1,3 @@
-import { AppleLight } from "@ridemountainpig/svgl-react";
 import type { ReactNode } from "react";
 
 type PrimaryButtonProps = {
@@ -26,7 +25,7 @@ export default function PrimaryButton({
 
     return (
         <a
-            className={`${button} bg-white text-[#26332e] hover:bg-[#e9f4f0]`}
+            className={`${button} ${themeClasses} ${className}`}
             href={link}
         >
             {children}

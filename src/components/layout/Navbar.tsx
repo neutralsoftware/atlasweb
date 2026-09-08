@@ -1,13 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import Logo from "@/assets/logo.svg";
 import {
     Menu,
     X,
     ArrowUpRight,
     ChevronDown,
-    BookOpen,
-    Rocket,
     Boxes,
     Layers3,
 } from "lucide-react";
@@ -15,54 +14,14 @@ import { useEffect, useState } from "react";
 import GradientLogo from "../ui/GradientLogo";
 
 const links = [
-    {
-        label: "Overview",
-        href: "/overview",
-        dropdown: [
-            {
-                title: "Engine",
-                description: "Explore the core Atlas Engine.",
-                href: "/overview/engine",
-                icon: Boxes,
-            },
-            {
-                title: "Rendering",
-                description: "See the rendering architecture.",
-                href: "/overview/rendering",
-                icon: Layers3,
-            },
-        ],
-    },
-    {
-        label: "About",
-        href: "/rendering",
-    },
-    {
-        label: "Learn",
-        href: "https://atlasengine.org/learn/first-project",
-        dropdown: [
-            {
-                title: "Getting Started",
-                description: "Build your first Atlas project.",
-                href: "/learn/first-project",
-                icon: Rocket,
-            },
-            {
-                title: "Documentation",
-                description: "Browse guides and API documentation.",
-                href: "https://docs.atlasengine.org",
-                icon: BookOpen,
-            },
-        ],
-    },
-    {
-        label: "News",
-        href: "https://atlasengine.org/news",
-    },
-    {
-        label: "Docs",
-        href: "https://docs.atlasengine.org",
-    },
+    { label: "Overview", href: "/overview", dropdown: [
+        { title: "Engine", description: "An editor and runtime for your next world.", href: "/overview#engine", icon: Boxes },
+        { title: "Rendering", description: "Materials, light and atmosphere.", href: "/overview#rendering", icon: Layers3 },
+    ] },
+    { label: "About", href: "/about" },
+    { label: "Learn", href: "/learn" },
+    { label: "News", href: "/news" },
+    { label: "Docs", href: "https://docs.atlasengine.org" },
 ];
 
 export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
@@ -82,14 +41,14 @@ export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
             window.removeEventListener("scroll", onScroll);
             window.removeEventListener("keydown", onKey);
         };
-    }, []);
+    }, [adaptive]);
     return (
         <nav
             aria-label="Main navigation"
             className={`fixed inset-x-0 top-0 z-50 grid grid-cols-[1fr_auto_1fr] items-center gap-7 px-10 py-[22px] transition-[background,color] duration-200 max-[1100px]:gap-5 max-[1100px]:px-6 max-[760px]:flex max-[760px]:gap-3 max-[760px]:px-5 max-[760px]:py-4 ${solid ? "border-b border-[#24292312] bg-[#faf8f5f0] text-[#242923] backdrop-blur-[20px]" : "text-white"}`}
         >
-            <a
-                href="#top"
+            <Link
+                href="/"
                 className="justify-self-start flex items-center gap-2.5 whitespace-nowrap text-[15px] font-[650] max-[760px]:gap-2 max-[760px]:text-[13px]"
                 onClick={() => setOpen(false)}
             >
@@ -105,11 +64,11 @@ export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
                         / by neutral software
                     </span>
                 </span>
-            </a>
+            </Link>
             <div className="flex justify-self-center gap-[26px] text-[13px] max-[760px]:hidden">
                 {links.map((link) => (
                     <div key={link.label} className="group relative">
-                        <a
+                        <Link
                             href={link.href}
                             className="flex items-center gap-1 transition-colors hover:text-[#70bfae]"
                         >
@@ -121,7 +80,7 @@ export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
                                     className="transition-transform duration-200 group-hover:rotate-180"
                                 />
                             )}
-                        </a>
+                        </Link>
 
                         {link.dropdown && (
                             <div
@@ -132,9 +91,9 @@ export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
                         pt-4
                         opacity-0
                         transition-all duration-200
-                        group-hover:visible
-                        group-hover:translate-y-0
-                        group-hover:opacity-100
+                        group-hover:visible group-focus-within:visible
+                        group-hover:translate-y-0 group-focus-within:translate-y-0
+                        group-hover:opacity-100 group-focus-within:opacity-100
                     "
                             >
                                 <div
@@ -153,7 +112,7 @@ export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
                                         const Icon = item.icon;
 
                                         return (
-                                            <a
+                                            <Link
                                                 key={item.title}
                                                 href={item.href}
                                                 className="
@@ -176,7 +135,7 @@ export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
                                                 <div className="text-[12px] leading-[1.45] opacity-60">
                                                     {item.description}
                                                 </div>
-                                            </a>
+                                            </Link>
                                         );
                                     })}
                                 </div>
@@ -185,12 +144,12 @@ export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
                     </div>
                 ))}
             </div>
-            <a
+            <Link
                 className={`flex justify-self-end  items-center gap-2.5 rounded-[30px] px-[18px] py-[11px] text-[13px] font-semibold max-[760px]:ml-auto max-[760px]:px-3 max-[760px]:py-[9px] max-[760px]:text-[11px] ${solid ? "bg-[#2e8b7f] text-white" : "bg-white text-[#242923]"}`}
-                href="https://atlasengine.org/download"
+                href="/download"
             >
                 Download <ArrowUpRight size={15} />
-            </a>
+            </Link>
             <button
                 className="hidden cursor-pointer border-0 bg-transparent p-2 text-inherit max-[760px]:block"
                 aria-label={open ? "Close menu" : "Open menu"}
@@ -205,12 +164,15 @@ export default function Navbar({ adaptive = false }: { adaptive?: boolean }) {
                     className="absolute inset-x-0 top-full flex flex-col gap-1 border-b border-[#d9ded4] bg-[#faf8f5] px-6 pb-6 pt-3 text-[#242923] min-[761px]:hidden"
                     id="mobile-navigation"
                 >
-                    <a
+                    {links.map((link) => (
+                        <Link key={link.label} href={link.href} onClick={() => setOpen(false)} className="border-b border-black/5 py-3 text-base">{link.label}</Link>
+                    ))}
+                    <Link
                         className="flex items-center gap-2.5 py-3"
-                        href="https://atlasengine.org/download"
+                        href="/download"
                     >
                         Download for macOS <ArrowUpRight size={16} />
-                    </a>
+                    </Link>
                 </div>
             )}
         </nav>

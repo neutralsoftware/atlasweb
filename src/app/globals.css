@@ -9,3 +9,14 @@
   --color-accent: #2E8B7F;
   --color-accent-hover: #26786E;
 }
+
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+body { background: #faf8f5; color: #242923; font-family: Arial, Helvetica, sans-serif; }
+::selection { background: #cce7dd; color: #183d32; }
+:focus-visible { outline: 2px solid #2e8b7f; outline-offset: 5px; }
+.page-title { font-size: clamp(48px, 6.4vw, 88px); font-weight: 500; line-height: 1.06; letter-spacing: -.06em; }
+.page-lede { font-size: clamp(16px, 1.5vw, 20px); line-height: 1.7; color: #72776f; }
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

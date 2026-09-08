@@ -1,8 +1,7 @@
-"use client";
-
 import { AppleLight } from "@ridemountainpig/svgl-react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Logo from "@/assets/logo.svg";
 
 export default function Footer() {
@@ -11,14 +10,14 @@ export default function Footer() {
     const button =
         "inline-flex items-center justify-center gap-3 rounded-[40px] px-[23px] py-[14px] text-sm font-semibold transition-[transform,background] duration-200 hover:-translate-y-0.5";
     return (
-        <main>
+        <div>
             <section
                 id="start"
                 className="relative grid min-h-[550px] place-items-center text-center text-white"
             >
                 <Image
                     src="/images/landingDay.png"
-                    alt="A dragon in a mountain landscape at night"
+                    alt="A glass dragon in a sunlit mountain landscape"
                     fill
                     sizes="100vw"
                     className="object-cover"
@@ -37,19 +36,19 @@ export default function Footer() {
                         Meet Atlas. Find your starting point. Go beyond.
                     </p>
                     <div className="flex justify-center gap-3 max-[760px]:flex-col max-[760px]:items-center">
-                        <a
+                        <Link
                             className={`${button} bg-white text-[#26332e] hover:bg-[#e9f4f0]`}
-                            href="https://atlasengine.org/download"
+                            href="/download"
                         >
                             Download for macOS{" "}
                             <AppleLight className="h-4 w-4" />
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                             className={`${button} border border-[#ffffff66] bg-[#ffffff0c] backdrop-blur-[10px] hover:bg-[#ffffff20]`}
-                            href="https://atlasengine.org/learn/first-project"
+                            href="/learn"
                         >
                             Create your first project <ArrowRight size={16} />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -57,13 +56,13 @@ export default function Footer() {
                 className={`${container} grid grid-cols-2 gap-[50px] pt-16 max-[760px]:grid-cols-1 max-[760px]:gap-[30px] max-[760px]:pt-11`}
             >
                 <div>
-                    <a
-                        href="#top"
+                    <Link
+                        href="/"
                         className="text-xl font-[650] hover:text-[#70bfae] flex flex-row items-center gap-2 transition-all"
                     >
                         <Logo className="h-8 w-8 max-[760px]:h-[25px] max-[760px]:w-[25px]" />
                         Atlas Engine
-                    </a>
+                    </Link>
                     <p className="my-3 mb-[18px] text-[13px] text-[#7a8075]">
                         Build everything. Then go beyond.
                     </p>
@@ -73,26 +72,26 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-wrap content-start justify-end gap-6 text-[13px] max-[760px]:justify-start max-[760px]:gap-5">
                     {[
-                        ["Overview", "#overview"],
+                        ["Overview", "/overview"],
                         ["Documentation", "https://docs.atlasengine.org"],
-                        ["News", "https://atlasengine.org/news"],
+                        ["News", "/news"],
                         ["GitHub", "https://github.com/neutralsoftware/atlas"],
-                        ["About", "https://atlasengine.org/about"],
+                        ["About", "/about"],
                     ].map(([label, href]) => (
-                        <a
+                        <Link
                             className="hover:text-[#70bfae]"
                             href={href}
                             key={label}
                         >
                             {label}
-                        </a>
+                        </Link>
                     ))}
                 </div>
                 <div className="col-span-full flex justify-between border-t border-[#d9ded4] py-6 text-[11px]">
                     <span>© {new Date().getFullYear()} Neutral Software</span>
-                    <a href="#top">Back to top ↑</a>
+                    <Link href="#top">Back to top ↑</Link>
                 </div>
             </footer>
-        </main>
+        </div>
     );
 }

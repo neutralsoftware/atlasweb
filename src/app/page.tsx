@@ -19,7 +19,7 @@ const modules = [
     [
         "Aurora",
         "The world",
-        "Atmosphere, terrain and outdoor systems for worlds with room to explore.",
+        "Terrain and outdoor systems for worlds with room to explore.",
     ],
     [
         "Bezel",
@@ -32,24 +32,27 @@ const modules = [
         "Spatial audio, playback and real-time sound processing.",
     ],
     [
-        "Tracer",
+        "Photon",
         "The light",
         "Path-traced rendering for a different perspective on your scene.",
     ],
+    [
+        "Hydra",
+        "The Atmosphere",
+        "Weather, sky and clouds that respond to your scene and the sun.",
+    ],
+    [
+        "Graphite",
+        "The UI",
+        "A flexible system for building in-game interfaces and editor tools.",
+    ],
+    [
+        "Tracer",
+        "The profiler",
+        "A real-time view of performance, memory and GPU usage.",
+    ],
 ];
-export const container =
-    "mx-auto w-[min(1200px,calc(100%-96px))] max-[760px]:w-[calc(100%-40px)]";
-export const eyebrow =
-    "mb-[22px] block text-[10px] font-[650] uppercase tracking-[0.17em] text-[#5c8173] max-[760px]:mb-4";
-export const title =
-    "text-[clamp(36px,4vw,58px)] font-medium leading-[1.1] tracking-[-0.045em]";
-export const copy = "text-[15px] leading-[1.8] text-[#72776f]";
-export const button =
-    "inline-flex items-center justify-center gap-3 rounded-[40px] px-[23px] py-[14px] text-sm font-semibold transition-[transform,background] duration-200 hover:-translate-y-0.5";
-export const featureTitle =
-    "text-xl font-[550] leading-[1.35] tracking-[-0.025em]";
-export const sectionHead =
-    "mb-[52px] grid grid-cols-[1.1fr_1fr] items-end gap-[100px] max-[1100px]:gap-12 max-[760px]:mb-8 max-[760px]:grid-cols-1 max-[760px]:gap-6";
+import { container, eyebrow, title, copy, button, featureTitle, sectionHead } from "@/components/ui/styles";
 
 export default function Home() {
     return (
@@ -69,6 +72,7 @@ export default function Home() {
                     <InformationCard
                         contents="Atlas Beta 1 Vela is here."
                         status="info"
+                        href="/vela1"
                     />
                     <h1 className="my-6 text-[clamp(48px,5.3vw,82px)] font-[550] leading-[1.07] tracking-[-0.055em] max-[760px]:text-[clamp(40px,8.5vw,62px)]">
                         Build everything.

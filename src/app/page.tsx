@@ -80,7 +80,7 @@ export default function Home() {
                     <InformationCard
                         contents="Atlas Beta 1 Vela is here."
                         status="info"
-                        href="/vela1"
+                        href="/releases/vela1"
                     />
                     <h1 className="my-6 text-[clamp(48px,5.3vw,82px)] font-[550] leading-[1.07] tracking-[-0.055em] max-[760px]:text-[clamp(40px,8.5vw,62px)]">
                         Build everything.

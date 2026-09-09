@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+
 import PageShell from "@/components/layout/PageShell";
+import DownloadPanel from "@/components/content/DownloadPanel";
 import { container } from "@/components/ui/styles";
 
 export const metadata: Metadata = {
@@ -22,29 +24,40 @@ export default function Download() {
                         <br />
                         starts here.
                     </h1>
+
                     <p className="page-lede my-8">
-                        Get the Atlas editor and runtime. Find the available
-                        packages and release notes on GitHub, including beta and
-                        pre-release builds.
+                        Get the Atlas editor and runtime. Download the latest
+                        release for your platform.
                     </p>
-                    <a
-                        href="https://github.com/neutralsoftware/atlas/releases"
-                        className="inline-flex items-center gap-3 rounded-full bg-[#2e8b7f] px-7 py-4 text-sm font-semibold text-white hover:bg-[#26786e]"
-                    >
-                        Get Atlas on GitHub <ArrowUpRight size={17} />
-                    </a>
+
+                    <DownloadPanel />
+
                     <p className="mt-6 text-sm leading-7 text-[#72776f]">
-                        For macOS, choose the DMG attached to a release, open
-                        it, and drag Atlas into Applications. Check that
-                        release’s notes for supported hardware and known issues.
+                        For macOS, open the DMG and drag Atlas into
+                        Applications. Check the release notes for supported
+                        hardware and known issues.
                     </p>
-                    <a
-                        className="mt-5 inline-block text-sm text-[#2e8b7f] underline underline-offset-4"
-                        href="/learn"
-                    >
-                        Read the documentation
-                    </a>
+
+                    <div className="mt-5 flex gap-6">
+                        <a
+                            className="text-sm text-[#2e8b7f] underline underline-offset-4"
+                            href="/learn"
+                        >
+                            Read the documentation
+                        </a>
+
+                        <a
+                            className="inline-flex items-center gap-1 text-sm text-[#2e8b7f] underline underline-offset-4"
+                            href="https://github.com/neutralsoftware/atlas/releases"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            GitHub releases
+                            <ArrowUpRight size={14} />
+                        </a>
+                    </div>
                 </div>
+
                 <Image
                     src="/images/editorPreview.png"
                     width={1863}

@@ -19,13 +19,15 @@ export async function generateMetadata({
     const post = await getPost((await params).slug);
     if (!post) return {};
     return {
-        title: `${post.title} — Atlas Engine`,
+        title: post.title,
         description: post.description,
         alternates: { canonical: `/news/${post.slug}` },
         openGraph: {
             type: "article",
             title: post.title,
             description: post.description,
+            url: `/news/${post.slug}`,
+            siteName: "Atlas Engine",
             publishedTime: post.date,
             authors: [post.author],
             images: [{ url: post.image, alt: post.imageAlt }],

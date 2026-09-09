@@ -7,9 +7,19 @@ import Carousel from "@/components/layout/Carousel";
 import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
-    title: "Vela 1 — Atlas Engine",
+    title: "Vela 1",
     description:
         "Welcome to Atlas Vela, the first beta of Atlas Engine. Explore the editor and the journey from pre-alpha to beta.",
+    alternates: { canonical: "/releases/vela1" },
+    openGraph: {
+        title: "Atlas Vela 1",
+        description:
+            "Welcome to Atlas Vela, the first beta of Atlas Engine. Explore the editor and the journey from pre-alpha to beta.",
+        url: "/releases/vela1",
+        siteName: "Atlas Engine",
+        type: "website",
+        images: ["/images/perRelease/alpha9.png"],
+    },
 };
 
 const evolutionSlides = [

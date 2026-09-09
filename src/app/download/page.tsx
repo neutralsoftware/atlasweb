@@ -7,9 +7,19 @@ import DownloadPanel from "@/components/content/DownloadPanel";
 import { container } from "@/components/ui/styles";
 
 export const metadata: Metadata = {
-    title: "Download — Atlas Engine",
+    title: "Download",
     description:
         "Get Atlas Engine for macOS or explore the source and available releases on GitHub.",
+    alternates: { canonical: "/download" },
+    openGraph: {
+        title: "Download Atlas Engine",
+        description:
+            "Get Atlas Engine for macOS or explore the source and available releases on GitHub.",
+        url: "/download",
+        siteName: "Atlas Engine",
+        type: "website",
+        images: ["/images/editorPreview.png"],
+    },
 };
 
 export default function Download() {

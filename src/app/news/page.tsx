@@ -5,10 +5,22 @@ import { getPosts, formatDate } from "@/lib/news";
 import { container } from "@/components/ui/styles";
 
 export const metadata: Metadata = {
-    title: "Newsroom — Atlas Engine",
+    title: "Newsroom",
     description:
         "Release notes, development stories and news from Atlas Engine and Neutral Software.",
-    alternates: { types: { "application/rss+xml": "/feed.xml" } },
+    alternates: {
+        canonical: "/news",
+        types: { "application/rss+xml": "/feed.xml" },
+    },
+    openGraph: {
+        title: "Atlas Engine Newsroom",
+        description:
+            "Release notes, development stories and news from Atlas Engine and Neutral Software.",
+        url: "/news",
+        siteName: "Atlas Engine",
+        type: "website",
+        images: ["/images/landingDay.png"],
+    },
 };
 export default async function News() {
     const posts = (await getPosts()).map(({ body, format, draft, ...post }) => {

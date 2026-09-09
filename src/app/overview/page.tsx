@@ -5,9 +5,19 @@ import PageShell from "@/components/layout/PageShell";
 import { container, title, copy, sectionHead } from "@/components/ui/styles";
 
 export const metadata: Metadata = {
-    title: "Overview — Atlas Engine",
+    title: "Overview",
     description:
         "Explore the Atlas editor, modular C++ runtime, rendering, physics and audio systems.",
+    alternates: { canonical: "/overview" },
+    openGraph: {
+        title: "Atlas Engine Overview",
+        description:
+            "Explore the Atlas editor, modular C++ runtime, rendering, physics and audio systems.",
+        url: "/overview",
+        siteName: "Atlas Engine",
+        type: "website",
+        images: ["/images/editorPreview.png"],
+    },
 };
 const systems = [
     [

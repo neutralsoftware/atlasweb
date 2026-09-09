@@ -15,7 +15,28 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     metadataBase: new URL("https://atlasengine.org"),
+    title: {
+        default: "Atlas Engine — Build everything. Then go beyond.",
+        template: "%s — Atlas Engine",
+    },
+    description:
+        "An open-source C++ game engine with a visual editor, modern rendering and a modular runtime. Build your next world with Atlas Engine.",
+    applicationName: "Atlas Engine",
+    authors: [
+        {
+            name: "Neutral Software",
+            url: "https://github.com/neutralsoftware",
+        },
+    ],
+    creator: "Neutral Software",
+    publisher: "Neutral Software",
+    category: "technology",
+    alternates: { canonical: "/" },
     openGraph: {
+        title: "Atlas Engine — Build everything. Then go beyond.",
+        description:
+            "An open-source C++ game engine with a visual editor, modern rendering and a modular runtime.",
+        url: "/",
         siteName: "Atlas Engine",
         type: "website",
         images: [
@@ -26,9 +47,6 @@ export const metadata: Metadata = {
         ],
     },
     twitter: { card: "summary_large_image" },
-    title: "Atlas Engine — Build everything. Then go beyond.",
-    description:
-        "An open-source C++ game engine with a visual editor, modern rendering and a modular runtime. Build your next world with Atlas Engine.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

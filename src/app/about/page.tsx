@@ -4,9 +4,19 @@ import PageShell from "@/components/layout/PageShell";
 import { container, title, copy, sectionHead } from "@/components/ui/styles";
 
 export const metadata: Metadata = {
-    title: "About — Atlas Engine",
+    title: "About",
     description:
         "The story behind Atlas Engine, an open-source game engine developed by Neutral Software and created by Max Van den Eynde.",
+    alternates: { canonical: "/about" },
+    openGraph: {
+        title: "About Atlas Engine",
+        description:
+            "The story behind Atlas Engine, an open-source game engine developed by Neutral Software and created by Max Van den Eynde.",
+        url: "/about",
+        siteName: "Atlas Engine",
+        type: "website",
+        images: ["/images/landingDay.png"],
+    },
 };
 
 export default function About() {
